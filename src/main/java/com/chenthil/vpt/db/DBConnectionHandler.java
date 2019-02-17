@@ -1,4 +1,4 @@
-package com.chenthil.lpv.db;
+package com.chenthil.vpt.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,6 +7,14 @@ import java.sql.Statement;
 
 public class DBConnectionHandler {
 	
+	static {
+		try {
+			initializeDB();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 	
 	public static void initializeDB() throws SQLException {
 		
@@ -14,7 +22,7 @@ public class DBConnectionHandler {
 	            getConnection("jdbc:h2:~/test", "sa", "");
 		Statement stmt = conn.createStatement();
 		stmt.execute("DROP TABLE IF EXISTS PARSER");
-		stmt.execute("CREATE TABLE TEST(GUID VARCHAR(255) PRIMARY KEY, "
+		stmt.execute("CREATE TABLE PARSER(GUID VARCHAR(255) PRIMARY KEY, "
 				+ " TIMEREQ VARCHAR(255), TIMERESP VARCHAR(255), URI VARCHAR(255),"
 				+ "ACTION VARCHAR(500))");
 		conn.close();
@@ -29,8 +37,5 @@ public class DBConnectionHandler {
 	
 	
 	
-	public static void main(String args[]) throws SQLException {
-		initializeDB();
-	}
 
 }

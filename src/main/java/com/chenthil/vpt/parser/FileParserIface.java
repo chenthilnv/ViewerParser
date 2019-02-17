@@ -1,4 +1,4 @@
-package com.chenthil.parser.util;
+package com.chenthil.vpt.parser;
 
 public interface FileParserIface {
 	

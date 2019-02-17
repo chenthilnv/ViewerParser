@@ -1,4 +1,4 @@
-package com.chenthil.lpv.vo;
+package com.chenthil.vpt.vo;
 
 public class ViewerBean {
 		

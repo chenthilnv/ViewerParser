@@ -1,4 +1,4 @@
-package com.chenthil.parser.util;
+package com.chenthil.vpt.parser;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -7,10 +7,10 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.chenthil.lpv.db.DBConnectionHandler;
-import com.chenthil.lpv.vo.ViewerBean;
+import com.chenthil.vpt.db.ParserDAO;
+import com.chenthil.vpt.vo.ViewerBean;
 
-public class TextFileParserNew {
+public class TextFileParserImpl implements FileParserIface{
 	
 	public static Map<String,ViewerBean> hashMap = new HashMap<String,ViewerBean>();
 	
@@ -110,7 +110,12 @@ public class TextFileParserNew {
 			
 				System.out.println("CAN BE SENT TO DB:" + viewverBean.toString());
 				
+				ParserDAO parserDAO = new ParserDAO();
+				parserDAO.insertOrUpdate(viewverBean);
+				
 			} else {
+				
+			
 				
 			//	System.out.println("CANNOT BE SENT TO DB:" + viewverBean.toString());
 				
@@ -129,7 +134,7 @@ public class TextFileParserNew {
 		
 		//DBConnectionHandler.getConnection();
 		
-		TextFileParserNew parser = new TextFileParserNew();
+		TextFileParserImpl parser = new TextFileParserImpl();
 		parser.parseFile("C:\\Users\\chent\\Desktop\\test\\trace.log");
 		
 	}
