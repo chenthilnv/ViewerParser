@@ -8,9 +8,20 @@ import java.util.List;
 
 import com.chenthil.vpt.vo.ViewerBean;
 
+/**
+ * DAO to handle DB related business. 
+ * 
+ * @author Chenthil Natarajan
+ *
+ */
 public class ParserDAO {
 	
 	
+	/**
+	 * This method is called by the Viewver to fetch all the current data from H2 embeded DB 
+	 * 
+	 * @return List<Object[]>
+	 */
 	public List<Object[]> loadDataFromDB() {
 		
 		PreparedStatement  pstmt = null;
@@ -60,7 +71,12 @@ public class ParserDAO {
 	}
 	
 	
-	
+	/**
+	 * This method is used by the Parser to persist the text data into H2 embeded DB. The Request and Response is correlated by UID and the viewverbean is 
+	 * a representation of either a request or response - whichever comes first will be inserted and the later will be updated. 
+	 * 
+	 * @param viewverBean
+	 */
 	public void insertOrUpdate(ViewerBean viewverBean) {
 		
 		PreparedStatement  pstmt = null;
@@ -130,6 +146,8 @@ public class ParserDAO {
 					System.out.println("Row not INSERTED successfully GUID:" + viewverBean.toString());
 					
 				}
+				
+				if (pstmtInner != null) pstmtInner.close();
 				
 			}
 			

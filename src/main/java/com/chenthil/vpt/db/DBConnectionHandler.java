@@ -4,7 +4,14 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+/**
+ * 
+ * DB Utility that prepares the tool for persistence into H2 Embeded database 
+ * and returns the connection to the DAO when requested.
+ * 
+ * @author Chenthil Natarajan
+ *
+ */
 public class DBConnectionHandler {
 	
 	static {
@@ -15,7 +22,11 @@ public class DBConnectionHandler {
 		}
 	}
 
-	
+	/**
+	 * Prepares the program for persistence
+	 * 
+	 * @throws SQLException
+	 */
 	public static void initializeDB() throws SQLException {
 		
 		Connection conn = DriverManager.
@@ -28,6 +39,13 @@ public class DBConnectionHandler {
 		conn.close();
 	}
 	
+	
+	/**
+	 * Returns the connection back to the DAO
+	 * 
+	 * @return Connection
+	 * @throws SQLException
+	 */
 	public static Connection getConnection() throws SQLException {
 		
 		return DriverManager.

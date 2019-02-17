@@ -1,5 +1,11 @@
 package com.chenthil.vpt.vo;
 
+/**
+ * ValueObject for VieverBean that represents either a request or a response.
+ * 
+ * @author Chenthil Natarajan
+ *
+ */
 public class ViewerBean {
 		
 		private String requestTimestamp;

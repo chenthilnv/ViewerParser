@@ -20,6 +20,13 @@ import com.chenthil.vpt.controller.ParserController;
 import com.chenthil.vpt.controller.ViewLoaderController;
 import com.chenthil.vpt.util.Validator;
 
+/**
+ * 
+ * GUI for the View Parser Tool
+ * 
+ * @author Chenthil
+ *
+ */
 public class VPTMain {
 
 	private JFrame frame;
