@@ -3,10 +3,63 @@ package com.chenthil.vpt.db;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.chenthil.vpt.vo.ViewerBean;
 
 public class ParserDAO {
+	
+	
+	public List<Object[]> loadDataFromDB() {
+		
+		PreparedStatement  pstmt = null;
+		ResultSet rs  = null;
+		
+		List<Object[]> returnList = new ArrayList<>();
+		
+		try(Connection connection = DBConnectionHandler.getConnection()) {
+			
+			String sql = "Select GUID,TIMEREQ,TIMERESP,URI,ACTION from PARSER";
+			
+			pstmt = connection.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				
+				Object[] objectArray = new Object[] {rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5)};
+				
+				returnList.add(objectArray);
+				
+			}
+			
+			
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			
+			
+		} finally {
+			
+			try {
+			
+				if (rs != null) rs.close();
+				if (pstmt != null) pstmt.close();
+				
+				
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+			
+		}
+		
+		return returnList;
+		
+	}
+	
+	
 	
 	public void insertOrUpdate(ViewerBean viewverBean) {
 		

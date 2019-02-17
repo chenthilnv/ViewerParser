@@ -3,7 +3,6 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -113,30 +112,9 @@ public class TextFileParserImpl implements FileParserIface{
 				ParserDAO parserDAO = new ParserDAO();
 				parserDAO.insertOrUpdate(viewverBean);
 				
-			} else {
-				
-			
-				
-			//	System.out.println("CANNOT BE SENT TO DB:" + viewverBean.toString());
-				
-			}
-			
-			
-		 //  System.out.println(lineItemType + ":>>" + line + "<<");	
+			} 
 		}
 	
 	}
 	
-	
-
-
-	public static void main(String args[]) throws SQLException {
-		
-		//DBConnectionHandler.getConnection();
-		
-		TextFileParserImpl parser = new TextFileParserImpl();
-		parser.parseFile("C:\\Users\\chent\\Desktop\\test\\trace.log");
-		
-	}
-
 }
